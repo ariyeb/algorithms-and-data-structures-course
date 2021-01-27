@@ -146,6 +146,10 @@ class DoublyLinkedList {
         }
         return arr;
     }
+
+    reverse() {
+
+    }
 }
 
 const dll = new DoublyLinkedList();

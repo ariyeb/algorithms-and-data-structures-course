@@ -130,6 +130,10 @@ class SinglyLinkedList {
         }
         return arr;
     }
+
+    reverse(){
+        
+    }
 }
 
 const sll = new SinglyLinkedList();
