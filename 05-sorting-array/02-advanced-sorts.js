@@ -122,3 +122,20 @@ function getMaxdigits(numsArr) {
     return maxDigits;
 }
 
+function radixSort(numsArr) {
+    const maxDigitscount = getMaxdigits(numsArr);
+    for (let digitPosition = 0; digitPosition < maxDigitscount; digitPosition++) {
+        const digitsArr = [[], [], [], [], [], [], [], [], [], []];
+        for (let num of numsArr) {
+            const digit = getDigit(num, digitPosition);
+            digitsArr[digit].push(num);
+        }
+        numsArr = [].concat(...digitsArr);
+    }
+    return numsArr;
+}
+
+// console.log(radixSort([3, 78, 54, 815, 20188, 23, 9, 321]));
+
+// Time Complexity (Best) 	Time Complexity (Average) 	Time Complexity (Worst)
+// O(nk) 	                O(nk) 	                    O(nk) 	 
