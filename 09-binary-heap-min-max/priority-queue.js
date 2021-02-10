@@ -69,21 +69,23 @@ class PriorityQueue {
     }
 }
 
-const pq = new PriorityQueue();
-console.log(pq.enqueue(5, 5));
-console.log(pq.enqueue(1, 1));
-console.log(pq.enqueue(4, 4));
-console.log(pq.enqueue(0, 0));
-console.log(pq.enqueue(2, 2));
-console.log(pq.enqueue(3, 3));
-console.log(pq.enqueue(0, 0));
+// const pq = new PriorityQueue();
+// console.log(pq.enqueue(5, 5));
+// console.log(pq.enqueue(1, 1));
+// console.log(pq.enqueue(4, 4));
+// console.log(pq.enqueue(0, 0));
+// console.log(pq.enqueue(2, 2));
+// console.log(pq.enqueue(3, 3));
+// console.log(pq.enqueue(0, 0));
 
 
-console.log(pq.dequeue());
-console.log(pq.dequeue());
-console.log(pq.dequeue());
-console.log(pq.dequeue());
-console.log(pq.dequeue());
-console.log(pq.dequeue());
-console.log(pq.dequeue());
-console.log(pq.values);
+// console.log(pq.dequeue());
+// console.log(pq.dequeue());
+// console.log(pq.dequeue());
+// console.log(pq.dequeue());
+// console.log(pq.dequeue());
+// console.log(pq.dequeue());
+// console.log(pq.dequeue());
+// console.log(pq.values);
+
+module.exports = PriorityQueue;
