@@ -21,8 +21,7 @@ class MaxBinaryHeap {
 
         return this.values;
     }
-
-
+    // O(log n)
 
     extractMax() {
         if (this.values.length === 0) return;
@@ -43,7 +42,7 @@ class MaxBinaryHeap {
 
         updatePointers(0);
         while (lastElVal < leftChildValue || lastElVal < rightChildValue) {
-            if (leftChildValue > rightChildValue) {
+            if (leftChildValue > rightChildValue || rightChildValue == undefined) {
                 this.values[valueIndex] = this.values[leftChildIndex];
                 this.values[leftChildIndex] = lastElVal;
                 updatePointers(leftChildIndex);
@@ -56,6 +55,7 @@ class MaxBinaryHeap {
 
         return maxValue;
     }
+    // O(log n)
 }
 
 const mbh = new MaxBinaryHeap();
@@ -68,3 +68,7 @@ console.log(mbh.extractMax());
 console.log(mbh.extractMax());
 console.log(mbh.extractMax());
 console.log(mbh.values);
+
+// 7
+// 10 -> 7 -> 6 -> 4 -> 0;
+// extractMax -> O(1)
