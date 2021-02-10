@@ -1,3 +1,6 @@
+const Queue = require("../07-stack-and-queue/queue");
+const Stack = require("../07-stack-and-queue/stack");
+
 class Graph {
     constructor() {
         this.adjacencyList = {};
@@ -30,7 +33,68 @@ class Graph {
     }
 
     dfsTraverse(start) {
+        const visited = {};
+        const result = [];
 
+        const traverse = (vertex) => {
+            if (!vertex) return;
+
+            visited[vertex] = true;
+            result.push(vertex);
+
+            for (let neighbor of this.adjacencyList[vertex]) {
+                if (visited[neighbor] == undefined) {
+                    traverse(neighbor);
+                }
+            }
+        };
+        traverse(start);
+
+        return result;
+    }
+
+    bfsTraverse(start) {
+        const q = new Queue();
+        q.enqueue(start);
+        const result = [];
+        const visited = {};
+        visited[start] = true;
+
+        while (q.size > 0) {
+            const currentVertex = q.dequeue();
+            result.push(currentVertex);
+
+            for (let neighbor of this.adjacencyList[currentVertex]) {
+                if (visited[neighbor] == undefined) {
+                    visited[neighbor] = true;
+                    q.enqueue(neighbor);
+                }
+            }
+        }
+
+        return result;
+    }
+
+    dfsTraverseIterative(start) {
+        const stack = new Stack();
+        stack.push(start);
+        const result = [];
+        const visited = {};
+        visited[start] = true;
+
+        while (stack.size > 0) {
+            const currentVertex = stack.pop();
+            result.push(currentVertex);
+
+            for (let neighbor of this.adjacencyList[currentVertex]) {
+                if (visited[neighbor] == undefined) {
+                    visited[neighbor] = true;
+                    stack.push(neighbor);
+                }
+            }
+        }
+
+        return result;
     }
 }
 
@@ -53,6 +117,8 @@ graph.addEdge("2", "4");
 graph.addEdge("3", "4");
 graph.addEdge("3", "5");
 graph.addEdge("4", "5");
-console.log(graph.adjacencyList);
-
+// console.log(graph.adjacencyList);
+console.log(graph.dfsTraverse("0"));
 // ["0", "1", "3", "4", "2", "5"]
+console.log(graph.bfsTraverse("0"));
+console.log(graph.dfsTraverseIterative("0"));
