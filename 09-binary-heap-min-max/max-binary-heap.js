@@ -32,39 +32,27 @@ class MaxBinaryHeap {
         this.values[0] = lastElVal;
         if (this.values.length === 1) return maxValue;
 
-        let valueIndex, leftChildindex, leftChildValue, rightChildIndex, rightChildValue;
+        let valueIndex, leftChildIndex, leftChildValue, rightChildIndex, rightChildValue;
         const updatePointers = (index) => {
             valueIndex = index;
-            leftChildindex = index * 2 + 1;
-            leftChildValue = this.values[leftChildindex];
+            leftChildIndex = index * 2 + 1;
+            leftChildValue = this.values[leftChildIndex];
             rightChildIndex = index * 2 + 2;
             rightChildValue = this.values[rightChildIndex];
         };
 
         updatePointers(0);
         while (lastElVal < leftChildValue || lastElVal < rightChildValue) {
-            if (leftChildindex < this.values.length && leftChildValue > rightChildValue) {
-                this.values[valueIndex] = this.values[leftChildindex];
-                this.values[leftChildindex] = lastElVal;
-                updatePointers(leftChildindex);
-            } else if (rightChildIndex < this.values.length) {
+            if (leftChildValue > rightChildValue) {
+                this.values[valueIndex] = this.values[leftChildIndex];
+                this.values[leftChildIndex] = lastElVal;
+                updatePointers(leftChildIndex);
+            } else {
                 this.values[valueIndex] = this.values[rightChildIndex];
                 this.values[rightChildIndex] = lastElVal;
                 updatePointers(rightChildIndex);
-            } else break;
+            }
         }
-
-        // while (lastElVal < leftChildValue || lastElVal < rightChildValue) {
-        //     if (leftChildValue > rightChildValue) {
-        //         this.values[valueIndex] = this.values[leftChiledIndex];
-        //         this.values[leftChiledIndex] = lastElVal;
-        //         updatePointers(leftChiledIndex);
-        //     } else {
-        //         this.values[valueIndex] = this.values[rightChildIndex];
-        //         this.values[rightChildIndex] = lastElVal;
-        //         updatePointers(rightChildIndex);
-        //     }
-        // }
 
         return maxValue;
     }
@@ -75,6 +63,7 @@ mbh.insert(45);
 mbh.insert(78);
 mbh.insert(5);
 mbh.insert(97);
+console.log(mbh.extractMax());
 console.log(mbh.extractMax());
 console.log(mbh.extractMax());
 console.log(mbh.extractMax());
